@@ -78,7 +78,7 @@ const ProductInfo = () => {
                 key: "rzp_test_JTSHS6xRWbqqde",
                 amount: product.price * quantity * 100,
                 currency: "INR",
-                name: "OnlineShopping",
+                name: "EliteMart",
                 description: "Product Purchase",
                 handler: function (response) {
                     const paymentId = response.razorpay_payment_id;
