@@ -49,14 +49,21 @@ const UpdateProductPage = () => {
         title: "",
         price: "",
         productImageUrl: "",
+        sideImageUrl : "",
+        backImageUrl : "",
         category: "",
         subcategory: "",
         description: "",
+        colors: [],
+        sizes: [],
         time: Timestamp.now(),
         date: new Date().toLocaleString("en-US", { month: "short", day: "2-digit", year: "numeric" })
     });
 
     const [subcategories, setSubcategories] = useState([]);
+     const [colorInput, setColorInput] = useState("");
+      const [sizeInput, setSizeInput] = useState("");
+    
 
     const getSingleProductFunction = async () => {
         setLoading(true);
@@ -64,16 +71,21 @@ const UpdateProductPage = () => {
             const productTemp = await getDoc(doc(fireDB, "products", id));
             const product = productTemp.data();
             setProduct({
-                title: product?.title,
-                price: product?.price,
-                productImageUrl: product?.productImageUrl,
-                category: product?.category,
-                subcategory: product?.subcategory || "",
-                description: product?.description,
-                quantity: product?.quantity,
-                time: product?.time,
-                date: product?.date
-            });
+    title: product?.title,
+    price: product?.price,
+    productImageUrl: product?.productImageUrl,
+    sideImageUrl : product?.sideImageUrl,
+    backImageUrl : product?.backImageUrl,
+    category: product?.category,
+    subcategory: product?.subcategory || "",
+    description: product?.description,
+    sizes : product?.sizes || [],
+    colors : product?.colors || [],
+    quantity: product?.quantity,
+    time: product?.time,
+    date: product?.date
+});
+
 
             const selectedCategory = categoryList.find(cat => cat.name === product?.category);
             setSubcategories(selectedCategory ? selectedCategory.subcategories : []);
@@ -147,6 +159,30 @@ const UpdateProductPage = () => {
                         />
                     </div>
 
+                    
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            name="sideImageUrl"
+                            value={product.sideImageUrl}
+                            onChange={(e) => setProduct({ ...product, sideImageUrl: e.target.value })}
+                            placeholder='side Image Url'
+                            className='bg-slate-50 border text-zinc-700 border-zinc-300 px-2 py-2 w-96 rounded-md outline-none placeholder-slate-400'
+                        />
+                    </div>
+
+                    
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            name="backImageUrl"
+                            value={product.backImageUrl}
+                            onChange={(e) => setProduct({ ...product, backImageUrl: e.target.value })}
+                            placeholder='back Image Url'
+                            className='bg-slate-50 border text-zinc-700 border-zinc-300 px-2 py-2 w-96 rounded-md outline-none placeholder-slate-400'
+                        />
+                    </div>
+
                     <div className="mb-3">
                         <select
                             value={product.category}
@@ -190,6 +226,84 @@ const UpdateProductPage = () => {
                             className='bg-slate-50 border text-zinc-700 border-zinc-300 px-2 py-2 w-96 rounded-md outline-none placeholder-slate-400'
                         />
                     </div>
+
+                    {/* Colors */}
+        <div className="mb-3">
+          <label className="block mb-1 text-zinc-700 font-medium">Colors</label>
+          <div className="flex gap-2 mb-2">
+            <input
+              type="text"
+              value={colorInput}
+              onChange={(e) => setColorInput(e.target.value)}
+              placeholder="Enter a color (e.g., Red)"
+              className="flex-1 bg-slate-50 border border-zinc-300 px-2 py-2 rounded-md outline-none placeholder-slate-400"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                if (colorInput && !product.colors.includes(colorInput)) {
+                  setProduct({
+                    ...product,
+                    colors: [...product.colors, colorInput],
+                  });
+                  setColorInput("");
+                }
+              }}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded"
+            >
+              Add
+            </button>
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {product.colors.map((color, idx) => (
+              <span
+                key={idx}
+                className="bg-blue-100 text-blue-700 px-2 py-1 rounded-md text-sm"
+              >
+                {color}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Sizes */}
+        <div className="mb-3">
+          <label className="block mb-1 text-zinc-700 font-medium">Sizes</label>
+          <div className="flex gap-2 mb-2">
+            <input
+              type="text"
+              value={sizeInput}
+              onChange={(e) => setSizeInput(e.target.value)}
+              placeholder="Enter a size (e.g., M, L, XL)"
+              className="flex-1 bg-slate-50 border border-zinc-300 px-2 py-2 rounded-md outline-none placeholder-slate-400"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                if (sizeInput && !product.sizes.includes(sizeInput)) {
+                  setProduct({
+                    ...product,
+                    sizes: [...product.sizes, sizeInput],
+                  });
+                  setSizeInput("");
+                }
+              }}
+              className="bg-green-500 hover:bg-green-600 text-white px-4 rounded"
+            >
+              Add
+            </button>
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {product.sizes.map((size, idx) => (
+              <span
+                key={idx}
+                className="bg-green-100 text-green-700 px-2 py-1 rounded-md text-sm"
+              >
+                {size}
+              </span>
+            ))}
+          </div>
+        </div>
 
                     <div className="mb-3">
                         <button
