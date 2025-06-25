@@ -16,16 +16,15 @@ const category = [
     name: "Mobiles",
   },
   {
-        image: 'https://media-hosting.imagekit.io/a02018db888d46f5/video-chat_1702352.png?Expires=1833516637&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=tLetN5b3FmfgmsZLBjIwWGZap8U1GrhWunG0P8nZHls4CLf78bQ1vlavbAKQWYItmXwDtuBhVFvCaLk0rlYiRAa9wmEoUuf7p0Mnniq8guSVIRa-O4e3l3REFxAorGAHF90b~gD6LSzbi-aBFSsT9WbfEzJSjPJFtG9OIHK0dzQPEYgiVAhZtui8rBFyh-gLsthGWgr19DZd~EwupdFvhHhyXG1ztrerin1ovVIVdO-Oa63ovOw-ZpX5RSi9Wk7JZyZH0A1aBPWUNgm7HCEaegiBsUCjgKInoVCK2GmK5bOlSLDshjt7utQDgHs8E1TQu8zam2Hy3bGHeoVhjUpjag',
-        name: 'Electronics'
-    },
+    image: "https://cdn-icons-png.flaticon.com/512/2620/2620993.png", 
+    name: "Electronics",
+  },
   {
     image: "https://cdn-icons-png.flaticon.com/256/10686/10686553.png",
     name: "Shoes",
   },
-  {
-    image:
-      "https://media-hosting.imagekit.io//ce6ad3dfd5d14f14/home-furniture.png?Expires=1833516975&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=eX0UazQJyGm~fobYnd0qMsKJCVKJNxCSY0QlSHxGi5YdQFToTUKpHurvEH7P7UbZGTR4oET6bSvZwxE741buaIrbp22let-d~-~6l5ecZhCPrwKq0xdgjP6ReBbjIFvJKWhC0ohgP--04rP1wAKAOpy3n6O5AvVlUcv-5FH5x7XGSeqXRYvFUH1R0umEqgzzLJNtlbUqosbksB4J2je1WEnLTVdh3YpGnkdggJ~yJq2tUWbwPIGE7zjcxMde15q~ZSKQ3aUCIZXI~fzYzyl-Ihks9ZsXZHuVdbrzpMwO48j-WwYhbUnA52M0HHY2Ek~ZoroqueBzcKDuyYGugK9URA",
+   {
+    image: "https://cdn-icons-png.flaticon.com/512/1426/1426749.png", 
     name: "Home & Furniture",
   },
   {
